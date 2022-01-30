@@ -1,4 +1,4 @@
-package question1;
+    package question1;
 
 public class PatternObservateur extends junit.framework.TestCase {
 
@@ -27,13 +27,15 @@ public class PatternObservateur extends junit.framework.TestCase {
         l1.addObserver(o2);
         l1.insert("test");
         l1.insert(" 1 ");
-        // vérifier que les deux observateurs ont bien été notifiés avec les
-        // bons paramètres
-
-        // à compléter !!
-
-        // ne pas modifier ces lignes, dernières assertions vraies de cette
-        // méthode
+        
+        assertFalse(o1.senders().empty());                        
+          assertFalse(o2.senders().empty()); 
+        assertEquals(" 1 ", o1.arguments().pop()); 
+         assertEquals(" 1 ", o2.arguments().pop());                        
+      assertEquals("test", o1.arguments().pop());
+        assertEquals("test", o2.arguments().pop());
+  
+        
         assertTrue(o1.senders().empty() && o1.arguments().empty());
         assertTrue(o2.senders().empty() && o2.arguments().empty());
     }
@@ -51,6 +53,13 @@ public class PatternObservateur extends junit.framework.TestCase {
         l2.insert("testB");
         l2.insert(" B ");
 
+        
+        assertFalse(o.senders().empty());
+        assertEquals(" B ", o.arguments().pop()); 
+        assertEquals("testB", o.arguments().pop());
+        assertEquals(" A ", o.arguments().pop());
+        assertEquals("testA", o.arguments().pop());
+  
         // à compléter à partir de la ligne 56
         // vérifier que l'observateur a bien été notifié par les deux listes
 
@@ -71,11 +80,26 @@ public class PatternObservateur extends junit.framework.TestCase {
         l1.addObserver(o2);
         l2.addObserver(o1);
         l2.addObserver(o2);
-
+        
         // à compléter à partir de la ligne 81
         // vérifier le bon fonctionnement de countObservers(), de deleteObserver
         // et deleteObservers()
-
+        if(l1.countObservers() == 0 ){
+            System.out.println("ne fonctionne pas");
+        }
+        else{
+        System.out.println(" fonctionne ");
+        l1.deleteObservers();
+        }
+        
+        
+         if(l2.countObservers() == 0 ){
+            System.out.println("ne fonctionne pas");
+        }
+        else{
+        System.out.println(" fonctionne ");
+        l2.deleteObservers();
+        }
         // à compléter !!
 
         // ne pas modifier ces lignes, dernières assertions vraies de cette

@@ -1,6 +1,6 @@
 package question2;
 
-//import java.awt.event. // à compléter
+import java.awt.event.* ;// à compléter
 //import java.awt.event. // à compléter
 import java.awt.TextArea;
 
